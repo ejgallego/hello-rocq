@@ -4,23 +4,28 @@ Note that:
 
 - running `coq-lsp` in the browser is still experimental, in
   particular expect some "Stack Overflows" until we fix the
-  WebAssembly backend we use in jsCoq
+  WebAssembly backend we use in jsCoq.
 
 - in order for `coq-lsp` to be reactive, cross-origin-isolation needs
-  to be enabled in VSCode, to do this be sure you append the
-  `?vscode-coi` query to the URL of the service you are using
+  to be enabled in VSCode; this seems to be the case in `vscode.dev`
+  or `github.dev`, but don't hesitate to contacts us if you see
+  `coq-lsp` doesn't respond when it should.
 
 - the `jsCoq` package manager has not been ported, so you are limited
   to Coq's `Stdlib`.
 
+- due to the previous issue, the total download size 180MiB, we will
+  address this shortly, but be patient on your first run.
+
 ## First steps with `coq-lsp`
 
 In order to use `coq-lsp`, web version, you first need to install the
-`coq-lsp` extension. That will take around 200MiB of disk space as the
-extension includes the full Coq Standard Library.
+`coq-lsp` extension. The extension should appear in the list of
+recommended extensions.
 
 Once you have the extension running, you should be able to do your
 first proof:
+
 ```coq
 Lemma easy_equality : 2 + 2 = 4.
 Proof.

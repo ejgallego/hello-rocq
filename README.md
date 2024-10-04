@@ -2,11 +2,10 @@
 
 Please visit this URL to start:
 
-https://github.dev/ejgallego/hello-rocq/?enable-coi
-https://github.dev/ejgallego/hello-rocq/blob/main/welcome.mv?enable-coi
+https://github.dev/ejgallego/hello-rocq
 
-Then, install the `coq-lsp` extension, which should appear in the
-"recommended extensions" list.
+Then open the [welcome.mv](./welcome.mv) file, follow the instructions
+there, and enjoy!
 
 Don't hesitate to leave feedback either at:
 
