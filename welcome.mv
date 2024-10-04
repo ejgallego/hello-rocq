@@ -1,0 +1,80 @@
+# Welcome to the coq-lsp Interactive Web Tutorial
+
+Note that:
+
+- running `coq-lsp` in the browser is still experimental, in
+  particular expect some "Stack Overflows" until we fix the
+  WebAssembly backend we use in jsCoq
+
+- in order for `coq-lsp` to be reactive, cross-origin-isolation needs
+  to be enabled in VSCode, to do this be sure you append the
+  `?vscode-coi` query to the URL of the service you are using
+
+- the `jsCoq` package manager has not been ported, so you are limited
+  to Coq's `Stdlib`.
+
+## First steps with `coq-lsp`
+
+In order to use `coq-lsp`, web version, you first need to install the
+`coq-lsp` extension. That will take around 200MiB of disk space as the
+extension includes the full Coq Standard Library.
+
+Once you have the extension running, you should be able to do your
+first proof:
+```coq
+Lemma easy_equality : 2 + 2 = 4.
+Proof.
+
+Qed.
+```
+
+Clicking inside the proof should allow you to see the goals. In this
+case, fill the empty space with `simpl. reflexivity.`
+
+Experienced Coq users would use `now reflexivity.` or `by [].`
+
+Congratulations, you did your first formal proof with `coq-lsp`, web
+version!
+
+The rest of this tutorial, which is a work in-progress, will introduce
+the most interesting `coq-lsp` features.
+
+Stay tuned!
+
+## Basic features and modes
+
+### `_CoqProject` detection
+
+### Goal display
+
+### Continuous and on-demand modes
+
+## Error recovery
+
+## Incremental checking and proof editing
+
+## LSP features
+
+### Completion
+
+### Code Actions
+
+### Document Symbols
+
+### Jump to Definition
+
+Jump to definition is available inside the documents. In the desktop
+version, jump to definition will also work on complete theories, but
+this feature is not ready yet for the web version.
+
+### Hover
+
+`coq-lsp` will display information about a symbol when you hover over it.
+
+Users can extend hover with their own plugins, and the amount of
+information that is displayed is configurable in settings.
+
+## More resources
+
+There is a lot more under the hood, please check
+[coq-lsp's project page](https://github.com/ejgallego/coq-lsp)
