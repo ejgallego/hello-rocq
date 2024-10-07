@@ -48,17 +48,87 @@ Stay tuned!
 
 ## Basic features and modes
 
-### `_CoqProject` detection
+### Literate document support
+
+As you can see, `coq-lsp` can work with literate Markdown and LaTeX
+Coq files in addition to regular Coq files. For example, in VSCode,
+you can now press `Ctrl-Caps-P`, and run the command `Markdown Preview to the side`
+to see this document rendered.
+
+You can keep interacting and editing the document without fear.
 
 ### Goal display
 
+`coq-lsp` will, by default, have the goals panel follow the
+cursor. Some users may not prefer that, so we offer the following
+settings to customize your proving experience:
+
+- `coq-lsp.goal_after_tactic`: if `true`, show goals after the tactic at the cursor has been executed, if `false`, show goals _before.
+- `coq-lsp.show_goals_on`: 0 to 3, meaning "don't follow cursor", "show on click", "show on click and cursor", and "show on click and command"
+
+There is space to further improve the goals mode, `coq-lsp` engine
+should be flexible enough to accommodate your workflow.
+
 ### Continuous and on-demand modes
+
+`coq-lsp` can support both continuous or on-demand
+checking. Continuous mode will minimize latency, however it can be
+costly in terms of CPU use.
+
+In `ondemand` mode, `coq-lsp` will only execute sentences when
+information about them is demanded. In pure on-demand mode, users can
+use the `M-n` and `M-p` keybindings to imitate the usual Proof General
+mode (usually also setting `coq-lsp.show_goals_on` to 0).
+
+`coq-lsp` also offers a very convenient intermediate mode, inspired by
+Isabelle, that will check the part of the document that is on view.
+
+This is a good compromise to minimize latency without doing too much
+advance work.
+
+`coq-lsp` engine doesn't internally distinguish between these two
+modes, all it knows is to build a document to a point, which is set to
+`End` when continuous mode is on.
+
+Relevant options are:
+
+- `coq-lsp.check_only_on_request`
+- `coq-lsp.check_on_scroll`
+
+### `_CoqProject` detection
+
+In the Coq world, most projects are configured using a `_CoqProject`
+file; you can point `coq-lsp` where your `_CoqProject` file is by
+using the "open folder" feature of `coq-lsp`.
+
+Note, this doesn't work (yet) in web mode.
 
 ## Error recovery
 
+`coq-lsp` features advanced and programmable error recovery. For
+example, lemmas that fail to `Qed` will be auto-admitted, and so will
+bullets.
+
+This is very convenient when working with large files, see:
+```coq
+Lemma i_am_broken : 3 = 4.
+Proof.
+
+Qed.
+
+About i_am_broken.
+```
+
 ## Incremental checking and proof editing
 
+Error recovery works together with the proof engine as to allow some
+interesting editing patterns. In particular, you can edit proof
+enclosed in `Proof.` / `Qed.`, and the part of the document afterwards
+won't be rechecked.
+
 ## LSP features
+
+In progress, wanna help? Submit a Pull Request!
 
 ### Completion
 
